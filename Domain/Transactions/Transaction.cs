@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Domain.Shared;
+﻿using Domain.Shared;
 
 namespace Domain.Transactions;
 public class Transaction : BaseEntity<Guid>
@@ -17,6 +11,7 @@ public class Transaction : BaseEntity<Guid>
 	public TransactionType Type { get; init; }
 
 	//NOTE: different for income or expense
+	public Guid CategoryId { get; init; }
 	private TransactionCategory _category;
 	public TransactionCategory Category
 	{
@@ -34,10 +29,9 @@ public class Transaction : BaseEntity<Guid>
 		get => _tags.AsReadOnly();
 	}
 
-	//TODO: add Note class
-	public string Note { get; set; }
+	protected Transaction() { } //NOTE: For EF
 
-	public Transaction(DateTime transactionDate, TransactionType type, TransactionCategory category, Money money, IList<Tag> tags, string note)
+	public Transaction(DateTime transactionDate, TransactionType type, TransactionCategory category, Money money, IList<Tag> tags)
 		: base(Guid.NewGuid())
 	{
 		TransactionDate = transactionDate;
@@ -45,7 +39,6 @@ public class Transaction : BaseEntity<Guid>
 		Category = category;
 		Money = money;
 		_tags = tags;
-		Note = note;
 	}
 
 	//NOTE: should i really use these factory methods? I'd delay answering that question

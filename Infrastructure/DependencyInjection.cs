@@ -1,30 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Domain.Transactions;
+﻿using Domain.Transactions;
 
 using Infrastructure.Common;
 using Infrastructure.Models.Transactions;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure;
 public static class DependencyInjection
 {
-	public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+	public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
 	{
-		services.AddPersistence();
+		services.AddPersistence(configuration);
 
 		return services;
 	}
 
-	private static IServiceCollection AddPersistence(this IServiceCollection services)
+	private static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
 	{
-		services.AddDbContext<AppDbContext>(options => options.UseNpgsql());
+		services.AddDbContext<AppDbContext>(
+			options => options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
 		//NOTE: Add repositories
 		services.AddScoped<ITransactionRepository, TransactionRepository>();

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Shared;
 
 namespace Domain.Transactions;
-public struct Tag
+public class Tag : BaseEntity<Guid>
 {
 	public string Name { get; init; }
+
+	public Guid UserId { get; init; }
 }

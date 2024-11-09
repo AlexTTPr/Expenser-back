@@ -1,9 +1,4 @@
-﻿using Application.Transaction.CreateTransaction;
-
-using Domain.Shared;
-using Domain.Transactions;
-
-using MediatR;
+﻿using MediatR;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +12,6 @@ public class TransactionsController(IMediator mediator) : ControllerBase
 	[HttpPost]
 	public async Task<ActionResult> CreateTransaction()
 	{
-		
 		return Created();
 	}
 }
