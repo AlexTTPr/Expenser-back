@@ -32,7 +32,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 					.Property(e => e.Name);
 
 				builder
-					.Property(e => e.TransactionType)
+				.Property(e => e.TransactionType)
 					.HasConversion<int>()
 					.IsRequired();
 			});
@@ -61,7 +61,6 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 			{
 				builder
 					.HasKey(x => x.Id);
-
 				builder
 					.Property(e => e.TransactionDate)
 					.IsRequired();

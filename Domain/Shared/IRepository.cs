@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
 
 namespace Domain.Shared;
 public interface IRepository<TEntity, TEntityId> where TEntity : BaseEntity<TEntityId>
@@ -12,10 +7,9 @@ public interface IRepository<TEntity, TEntityId> where TEntity : BaseEntity<TEnt
 
 	Task UpdateAsync(TEntity entity);
 
-	Task RemoveAsync(TEntity id);
 	Task RemoveAsync(TEntityId id);
 
-	Task<TEntity> GetById(TEntityId id);
+	Task<TEntity?> GetByIdAsync(TEntityId id);
 
 	Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>>? filter = null, bool tracked = true);
 	Task<ICollection<TEntity>> GetManyAsync(Expression<Func<TEntity, bool>>? filter = null, bool tracked = true);

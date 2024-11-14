@@ -7,7 +7,7 @@ public class Money
 		get => _amount;
 		init
 		{
-			if(value <= 0)
+			if(value < 0)
 				throw new ArgumentException("Amount should not be less than 0", nameof(Amount));
 			_amount = value;
 		}

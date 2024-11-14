@@ -3,13 +3,11 @@
 using MediatR;
 
 namespace Application.Transactions.DeleteTransaction;
-internal sealed class DeleteTransactionCommandHandler(ITransactionRepository transactionRepository) : IRequestHandler<DeleteTransactionCommand, DeleteTransactionCommandResponse>
+internal sealed class DeleteTransactionCommandHandler(ITransactionRepository transactionRepository) : IRequestHandler<DeleteTransactionCommand>
 {
-	private readonly ITransactionRepository _transactionRepository = transactionRepository;
 
-	public Task<DeleteTransactionCommandResponse> Handle(DeleteTransactionCommand request, CancellationToken cancellationToken)
+	public Task Handle(DeleteTransactionCommand request, CancellationToken cancellationToken)
 	{
-		// Implement your logic here
-		throw new NotImplementedException();
+		return transactionRepository.RemoveAsync(request.Id);
 	}
 }

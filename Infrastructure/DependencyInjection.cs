@@ -1,7 +1,11 @@
 ﻿using Domain.Transactions;
+using Domain.Users;
 
 using Infrastructure.Common;
+using Infrastructure.Models.Categories;
+using Infrastructure.Models.Tags;
 using Infrastructure.Models.Transactions;
+using Infrastructure.Models.Users;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -23,7 +27,11 @@ public static class DependencyInjection
 			options => options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
 		//NOTE: Add repositories
-		services.AddScoped<ITransactionRepository, TransactionRepository>();
+		services
+			.AddScoped<IUserRepository, UserRepository>()
+			.AddScoped<ITagRepository, TagRepository>()
+			.AddScoped<ICategoryRepository, CategoryRepository>()
+			.AddScoped<ITransactionRepository, TransactionRepository>();
 
 		return services;
 	}

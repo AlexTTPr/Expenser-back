@@ -9,4 +9,13 @@ public class TransactionCategory : BaseEntity<Guid>
 
 	public TransactionType TransactionType { get; init; }
 	//TODO: add corresponding image
+
+	protected TransactionCategory() { } // NOTE: For EF
+
+	public TransactionCategory(Guid? userId, string name, TransactionType transactionType)
+	{
+		UserId = userId;
+		Name = name;
+		TransactionType = transactionType;
+	}
 }

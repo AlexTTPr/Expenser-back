@@ -18,7 +18,7 @@ public class Transaction : BaseEntity<Guid>
 		get => _category;
 		init
 		{
-			if(value.TransactionType == _category.TransactionType)
+			if(value.TransactionType == Type)
 				_category = value;
 		}
 	}
@@ -31,9 +31,10 @@ public class Transaction : BaseEntity<Guid>
 
 	protected Transaction() { } //NOTE: For EF
 
-	public Transaction(DateTime transactionDate, TransactionType type, TransactionCategory category, Money money, IList<Tag> tags)
+	public Transaction(Guid userId, DateTime transactionDate, TransactionType type, TransactionCategory category, Money money, IList<Tag> tags)
 		: base(Guid.NewGuid())
 	{
+		UserId = userId;
 		TransactionDate = transactionDate;
 		Type = type;
 		Category = category;
