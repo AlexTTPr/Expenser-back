@@ -11,7 +11,7 @@ namespace Api.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-public class UserController(IMediator mediator) : ControllerBase
+public class UsersController(IMediator mediator) : ControllerBase
 {
 	[HttpPost]
 	public async Task<ActionResult<CreateUserCommand>> CreateUser([FromBody] CreateUserCommand command)

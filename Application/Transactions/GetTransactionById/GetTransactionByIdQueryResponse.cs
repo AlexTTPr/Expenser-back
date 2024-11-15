@@ -3,7 +3,7 @@ using Domain.Transactions;
 
 namespace Application.Transactions.GetTransactionById;
 
-public record class GetTransactionByIdQueryQueryResponse(
+public record class GetTransactionByIdQueryResponse(
 	Guid UserId,
 	Money Money,
 	TransactionType Type,

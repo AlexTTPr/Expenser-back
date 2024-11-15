@@ -1,16 +1,14 @@
 ﻿using Domain.Transactions;
 
-using Mapster;
-
 using MediatR;
 
 namespace Application.Transactions.GetTransactionById;
-internal sealed class GetTransactionByIdHandler(ITransactionRepository transactionRepository) : IRequestHandler<GetTransactionByIdQuery, GetTransactionByIdQueryQueryResponse>
+internal sealed class GetTransactionByIdHandler(ITransactionRepository transactionRepository) : IRequestHandler<GetTransactionByIdQuery, GetTransactionByIdQueryResponse>
 {
-	public async Task<GetTransactionByIdQueryQueryResponse> Handle(GetTransactionByIdQuery request, CancellationToken cancellationToken)
+	public async Task<GetTransactionByIdQueryResponse> Handle(GetTransactionByIdQuery request, CancellationToken cancellationToken)
 	{
 		var transaction = await transactionRepository.GetByIdAsync(request.Id);
 
-		return transaction.Adapt<GetTransactionByIdQueryQueryResponse>();
+		return new GetTransactionByIdQueryResponse(transaction.UserId, transaction.Money, transaction.Type, transaction.Category, transaction.Tags.ToList());
 	}
 }

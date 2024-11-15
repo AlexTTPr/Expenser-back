@@ -23,7 +23,7 @@ public class Transaction : BaseEntity<Guid>
 		}
 	}
 
-	private IList<Tag> _tags;
+	private IList<Tag> _tags = [];
 	public IReadOnlyCollection<Tag> Tags
 	{
 		get => _tags.AsReadOnly();
