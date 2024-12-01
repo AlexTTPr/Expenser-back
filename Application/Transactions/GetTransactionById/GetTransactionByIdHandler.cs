@@ -9,6 +9,6 @@ internal sealed class GetTransactionByIdHandler(ITransactionRepository transacti
 	{
 		var transaction = await transactionRepository.GetByIdAsync(request.Id);
 
-		return new GetTransactionByIdQueryResponse(transaction.UserId, transaction.Money, transaction.Type, transaction.Category, transaction.Tags.ToList());
+		return new GetTransactionByIdQueryResponse(transaction.UserId, transaction.Money, transaction.Type, transaction.Category, [.. transaction.Tags]);
 	}
 }

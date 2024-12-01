@@ -38,6 +38,7 @@ public class Transaction : BaseEntity<Guid>
 		TransactionDate = transactionDate;
 		Type = type;
 		Category = category;
+		CategoryId = category.Id;
 		Money = money;
 		_tags = tags;
 	}

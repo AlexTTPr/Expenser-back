@@ -18,7 +18,7 @@ public class TransactionsController(IMediator mediator) : ControllerBase
 	public async Task<ActionResult<CreateTransactionCommandResponse>> CreateTransaction([FromBody] CreateTransactionCommand command)
 	{
 		var validation = new CreateTransactionCommandValidator().Validate(command);
-		if(validation!.IsValid)
+		if(!validation!.IsValid)
 			return BadRequest(validation.Errors);
 
 		return Ok(await _mediator.Send(command));
@@ -36,6 +36,7 @@ public class TransactionsController(IMediator mediator) : ControllerBase
 	public async Task<ActionResult<DeleteTransactionCommand>> DeleteTransaction(Guid id)
 	{
 		await _mediator.Send(new DeleteTransactionCommand(id));
-		return Ok();
+
+		return BadRequest();
 	}
 }
