@@ -3,7 +3,7 @@
 using MediatR;
 
 namespace Application.Transactions.DeleteTransaction;
-internal sealed class DeleteTransactionCommandHandler(ITransactionRepository transactionRepository) : IRequestHandler<DeleteTransactionCommand>
+public sealed class DeleteTransactionCommandHandler(ITransactionRepository transactionRepository) : IRequestHandler<DeleteTransactionCommand>
 {
 
 	public Task Handle(DeleteTransactionCommand request, CancellationToken cancellationToken)

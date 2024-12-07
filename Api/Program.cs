@@ -27,7 +27,7 @@ using(var scope = app.Services.CreateScope())
 	DbSeeder.SeedDb(scope.ServiceProvider.GetRequiredService<AppDbContext>());
 }
 
-
+app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

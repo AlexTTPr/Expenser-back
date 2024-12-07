@@ -1,6 +1,7 @@
 ﻿using Application.Transactions.CreateTransaction;
 using Application.Transactions.DeleteTransaction;
-using Application.Transactions.GetTransactionById;
+using Application.Transactions.GetTransaction;
+using Application.Transactions.UpdateTransaction;
 
 using MediatR;
 
@@ -26,17 +27,31 @@ public class TransactionsController(IMediator mediator) : ControllerBase
 
 	[HttpGet]
 	[Route("{id:guid}")]
-	public async Task<ActionResult<GetTransactionByIdQuery>> GetTransaction(Guid id)
+	public async Task<ActionResult<GetTransactionByIdQueryResponse>> GetTransaction(Guid id)
 	{
 		return Ok(await _mediator.Send(new GetTransactionByIdQuery(id)));
 	}
 
+	[HttpGet]
+	[Route("")]
+	public async Task<ActionResult<GetTransactionsByUserIdQueryResponse>> GetTransactionsByUserId([FromQuery] Guid userId)
+	{
+		return Ok(await _mediator.Send(new GetTransactionsByUserIdQuery(userId)));
+	}
+
 	[HttpDelete]
 	[Route("{id:guid}")]
-	public async Task<ActionResult<DeleteTransactionCommand>> DeleteTransaction(Guid id)
+	public async Task<ActionResult> DeleteTransaction(Guid id)
 	{
 		await _mediator.Send(new DeleteTransactionCommand(id));
 
-		return BadRequest();
+		return Ok();
+	}
+
+	[HttpPut]
+	[Route("{id:guid}")]
+	public async Task<ActionResult<UpdateTransactionCommandResponse>> UpdateTransaction([FromBody] UpdateTransactionCommand request)
+	{
+		return Ok(await _mediator.Send(request));
 	}
 }

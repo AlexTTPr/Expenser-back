@@ -5,10 +5,10 @@ public class Transaction : BaseEntity<Guid>
 {
 	public Guid UserId { get; init; }
 
-	public DateTime TransactionDate { get; private set; }
-	public Money Money { get; private set; }
+	public DateTime TransactionDate { get; set; }
+	public Money Money { get; set; }
 
-	public TransactionType Type { get; init; }
+	public TransactionType Type { get; set; }
 
 	//NOTE: different for income or expense
 	public Guid CategoryId { get; init; }
@@ -16,7 +16,7 @@ public class Transaction : BaseEntity<Guid>
 	public TransactionCategory Category
 	{
 		get => _category;
-		init
+		set
 		{
 			if(value.TransactionType == Type)
 				_category = value;

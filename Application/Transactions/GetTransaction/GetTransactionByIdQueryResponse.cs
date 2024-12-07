@@ -1,7 +1,7 @@
 ﻿using Domain.Shared;
 using Domain.Transactions;
 
-namespace Application.Transactions.GetTransactionById;
+namespace Application.Transactions.GetTransaction;
 
 public record class GetTransactionByIdQueryResponse(
 	Guid UserId,

@@ -2,8 +2,8 @@
 
 using MediatR;
 
-namespace Application.Transactions.GetTransactionById;
-internal sealed class GetTransactionByIdHandler(ITransactionRepository transactionRepository) : IRequestHandler<GetTransactionByIdQuery, GetTransactionByIdQueryResponse>
+namespace Application.Transactions.GetTransaction;
+public sealed class GetTransactionByIdHandler(ITransactionRepository transactionRepository) : IRequestHandler<GetTransactionByIdQuery, GetTransactionByIdQueryResponse>
 {
 	public async Task<GetTransactionByIdQueryResponse> Handle(GetTransactionByIdQuery request, CancellationToken cancellationToken)
 	{

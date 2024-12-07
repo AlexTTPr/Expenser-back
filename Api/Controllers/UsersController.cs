@@ -29,7 +29,8 @@ public class UsersController(IMediator mediator) : ControllerBase
 	[Route("{id:guid}")]
 	public async Task<ActionResult<GetUserByidQuery>> GetUser(Guid id)
 	{
-		return Ok(await mediator.Send(new GetUserByidQuery(id)));
+		var res = await mediator.Send(new GetUserByidQuery(id));
+		return Ok(res);
 	}
 
 	[HttpDelete]
@@ -38,5 +39,12 @@ public class UsersController(IMediator mediator) : ControllerBase
 	{
 		await mediator.Send(new DeleteUserCommand(id));
 		return Ok();
+	}
+
+	[HttpPost]
+	[Route("signIn")]
+	public async Task<ActionResult> SiginIn([FromBody] GetUserByEmailAndPasswordQuery request)
+	{
+		return Ok(await mediator.Send(request));
 	}
 }

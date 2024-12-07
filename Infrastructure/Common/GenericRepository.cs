@@ -59,7 +59,10 @@ public abstract class GenericRepository<TEntity, TEntityId> : IRepository<TEntit
 
 	public virtual async Task RemoveAsync(TEntityId id)
 	{
-		await _set.Where(e => e.Id!.Equals(id)).ExecuteDeleteAsync();
+		var count = await _set.Where(e => e.Id!.Equals(id)).ExecuteDeleteAsync();
+
+		if(count == 0)
+			throw new ArgumentException("No entities with specified Id to remove");
 
 		await Context.SaveChangesAsync();
 	}

@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{498FBB49-6044-4E6E-8B09-0836C0E73867}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expenser-tests", "Expenser-tests\Expenser-tests.csproj", "{9C15D79D-D9AD-4095-93C9-D1475A3C4AF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{05833154-C757-4977-8DF5-1536D411F6BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05833154-C757-4977-8DF5-1536D411F6BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05833154-C757-4977-8DF5-1536D411F6BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C15D79D-D9AD-4095-93C9-D1475A3C4AF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C15D79D-D9AD-4095-93C9-D1475A3C4AF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C15D79D-D9AD-4095-93C9-D1475A3C4AF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C15D79D-D9AD-4095-93C9-D1475A3C4AF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

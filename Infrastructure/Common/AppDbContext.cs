@@ -44,6 +44,15 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 					.HasKey(e => e.Id);
 
 				builder
+					.Property(e => e.Name);
+
+				builder
+					.Property(e => e.Email);
+
+				builder
+					.Property(e => e.PasswordHash);
+
+				builder
 					.HasMany<Transaction>()
 					.WithOne()
 					.HasForeignKey(e => e.UserId)
